@@ -1,0 +1,18 @@
+<plugin>
+  <groupId>org.owasp</groupId>
+  <artifactId>dependency-check-maven</artifactId>
+  <version>8.4.0</version> <!-- pick a stable recent version -->
+  <configuration>
+    <!-- fail build if any vulnerability CVSS >= 7.0 -->
+    <failBuildOnCVSS>7.0</failBuildOnCVSS>
+    <format>ALL</format> <!-- generates HTML, XML, JSON -->
+    <outputDirectory>${project.build.directory}/dependency-check-report</outputDirectory>
+  </configuration>
+  <executions>
+    <execution>
+      <goals>
+        <goal>check</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
