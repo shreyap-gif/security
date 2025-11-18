@@ -1,18 +1,24 @@
-<plugin>
-  <groupId>org.owasp</groupId>
-  <artifactId>dependency-check-maven</artifactId>
-  <version>8.4.0</version> <!-- pick a stable recent version -->
-  <configuration>
-    <!-- fail build if any vulnerability CVSS >= 7.0 -->
-    <failBuildOnCVSS>7.0</failBuildOnCVSS>
-    <format>ALL</format> <!-- generates HTML, XML, JSON -->
-    <outputDirectory>${project.build.directory}/dependency-check-report</outputDirectory>
-  </configuration>
-  <executions>
-    <execution>
-      <goals>
-        <goal>check</goal>
-      </goals>
-    </execution>
-  </executions>
-</plugin>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <!-- Replace these coordinates with your real project values later -->
+  <groupId>com.example</groupId>
+  <artifactId>security</artifactId>
+  <version>0.1.0-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>security</name>
+
+  <build>
+    <plugins>
+      <!-- OWASP Dependency-Check plugin -->
+      <plugin>
+        <groupId>org.owasp</groupId>
+        <artifactId>dependency-check-maven</artifactId>
+        <version>8.4.0</version>
+        <configuration>
+          <!-- Fail the build if any vulnerability has CVSS >= 7.0 -->
+          <failBui
