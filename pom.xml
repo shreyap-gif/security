@@ -1,49 +1,43 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-  <!-- Replace groupId/artifactId/version with your real values if needed -->
-  <groupId>com.example</groupId>
-  <artifactId>security</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.example</groupId>
+    <artifactId>java-security-demo</artifactId>
+    <version>1.0.0</version>
 
-  <name>security</name>
+    <dependencies>
+        <!-- JUnit -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>5.9.1</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-  <build>
-    <plugins>
-      <!-- OWASP Dependency-Check plugin -->
-      <plugin>
-        <groupId>org.owasp</groupId>
-        <artifactId>dependency-check-maven</artifactId>
-        <version>8.4.0</version>
-        <configuration>
-          <!-- Fail the build if any vulnerability has CVSS >= 7.0 -->
-          <failBuildOnCVSS>7.0</failBuildOnCVSS>
+    <build>
+        <plugins>
+            <!-- Maven Compiler -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
 
-          <!-- Generate multiple formats (HTML, XML, JSON) -->
-          <format>ALL</format>
+            <!-- Maven Surefire for tests -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+            </plugin>
+        </plugins>
+    </build>
 
-          <!-- Output folder for the reports -->
-          <outputDirectory>${project.build.directory}/dependency-check-report</outputDirectory>
-        </configuration>
-        <executions>
-          <execution>
-            <goals>
-              <goal>check</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
-
-      <!-- Add other plugins here if your build needs them -->
-    </plugins>
-  </build>
-
-  <!-- Add your dependencies below when ready -->
-  <dependencies>
-    <!-- Example: none yet -->
-  </dependencies>
 </project>
